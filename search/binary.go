@@ -6,14 +6,14 @@ func BinarySearch(arr []int, num int) bool {
 
 	for lo < hi {
 		m := lo + (hi-lo)/2
-		v := arr[int(m)]
+		v := arr[m]
 
 		if v == num {
 			return true
 		} else if v > num {
-			hi = int(m)
+			hi = m
 		} else {
-			lo = int(m) + 1
+			lo = m + 1
 		}
 	}
 
