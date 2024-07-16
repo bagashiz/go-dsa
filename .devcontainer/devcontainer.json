@@ -15,9 +15,10 @@
         "vscode": {
             "extensions": [
                 "golang.go",
-                "waderyan.gitblame", // git blame
-                "oderwat.indent-rainbow", // colorize indentation
-                "davidanson.vscode-markdownlint" // markdown linting
+                "waderyan.gitblame",
+                "oderwat.indent-rainbow",
+                "davidanson.vscode-markdownlint",
+                "redhat.vscode-yaml"
             ],
             "settings": {
                 "editor.formatOnSave": true,
