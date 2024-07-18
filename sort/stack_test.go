@@ -2,6 +2,7 @@ package sort_test
 
 import (
 	"fmt"
+	"reflect"
 	"testing"
 
 	"github.com/bagashiz/go-dsa/sort"
@@ -102,23 +103,23 @@ func TestStackStruct(t *testing.T) {
 	}
 
 	testCases := []struct {
-		push   []person
-		pop    []person
-		peek   person
+		push   []*person
+		pop    []*person
+		peek   *person
 		length int
 	}{
-		{push: []person{{name: "Alice", age: 25}, {name: "Bob", age: 30}}, pop: []person{{name: "Bob", age: 30}}, peek: person{name: "Alice", age: 25}, length: 1},
-		{push: []person{{name: "Charlie", age: 35}}, pop: []person{}, peek: person{name: "Charlie", age: 35}, length: 1},
-		{push: []person{{name: "Dave", age: 40}}, pop: []person{{name: "Dave", age: 40}}, peek: person{}, length: 0},
-		{push: []person{{name: "Eve", age: 45}, {name: "Frank", age: 50}, {name: "Grace", age: 55}}, pop: []person{{name: "Grace", age: 55}, {name: "Frank", age: 50}, {name: "Eve", age: 45}}, peek: person{}, length: 0},
-		{push: []person{{name: "Harry", age: 60}}, pop: []person{{name: "Harry", age: 60}}, peek: person{}, length: 0},
-		{push: []person{}, pop: []person{{}}, peek: person{}, length: 0},
+		{push: []*person{{name: "Alice", age: 25}, {name: "Bob", age: 30}}, pop: []*person{{name: "Bob", age: 30}}, peek: &person{name: "Alice", age: 25}, length: 1},
+		{push: []*person{{name: "Charlie", age: 35}}, pop: []*person{}, peek: &person{name: "Charlie", age: 35}, length: 1},
+		{push: []*person{{name: "Dave", age: 40}}, pop: []*person{{name: "Dave", age: 40}}, peek: nil, length: 0},
+		{push: []*person{{name: "Eve", age: 45}, {name: "Frank", age: 50}, {name: "Grace", age: 55}}, pop: []*person{{name: "Grace", age: 55}, {name: "Frank", age: 50}, {name: "Eve", age: 45}}, peek: nil, length: 0},
+		{push: []*person{{name: "Harry", age: 60}}, pop: []*person{{name: "Harry", age: 60}}, peek: nil, length: 0},
+		{push: []*person{}, pop: []*person{}, peek: nil, length: 0},
 	}
 
 	for i, tc := range testCases {
 		index := fmt.Sprint(i)
 		t.Run(index, func(t *testing.T) {
-			stack := sort.NewStack[person]()
+			stack := sort.NewStack[*person]()
 
 			for _, val := range tc.push {
 				stack.Push(val)
@@ -126,13 +127,13 @@ func TestStackStruct(t *testing.T) {
 
 			for _, val := range tc.pop {
 				popped := stack.Pop()
-				if popped != val {
+				if !reflect.DeepEqual(popped, val) {
 					t.Errorf("[case: %s] want %v, got %v", index, val, popped)
 				}
 			}
 
 			peeked := stack.Peek()
-			if peeked != tc.peek {
+			if !reflect.DeepEqual(peeked, tc.peek) {
 				t.Errorf("[case: %s] want %v, got %v", index, tc.peek, peeked)
 			}
 
