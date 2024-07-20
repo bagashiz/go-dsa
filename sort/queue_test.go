@@ -10,9 +10,9 @@ import (
 
 func TestQueueString(t *testing.T) {
 	testCases := []struct {
+		peek    string
 		enqueue []string
 		deque   []string
-		peek    string
 		length  int
 	}{
 		{enqueue: []string{"apple", "banana", "cherry"}, deque: []string{"apple"}, peek: "banana", length: 2},
@@ -103,9 +103,9 @@ func TestQueueStruct(t *testing.T) {
 	}
 
 	testCases := []struct {
+		peek    *person
 		enqueue []*person
 		deque   []*person
-		peek    *person
 		length  int
 	}{
 		{enqueue: []*person{{name: "Alice", age: 25}, {name: "Bob", age: 30}}, deque: []*person{{name: "Alice", age: 25}}, peek: &person{name: "Bob", age: 30}, length: 1},

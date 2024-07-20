@@ -6,8 +6,8 @@ type SNode[T any] struct {
 }
 
 type Stack[T any] struct {
-	length int
 	head   *SNode[T]
+	length int
 }
 
 func NewStack[T any]() *Stack[T] {

@@ -6,9 +6,9 @@ type QNode[T any] struct {
 }
 
 type Queue[T any] struct {
-	length int
 	head   *QNode[T]
 	tail   *QNode[T]
+	length int
 }
 
 func NewQueue[T any]() *Queue[T] {

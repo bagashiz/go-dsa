@@ -10,9 +10,9 @@ import (
 
 func TestStackString(t *testing.T) {
 	testCases := []struct {
+		peek   string
 		push   []string
 		pop    []string
-		peek   string
 		length int
 	}{
 		{push: []string{"apple", "banana", "cherry"}, pop: []string{"cherry", "banana"}, peek: "apple", length: 1},
@@ -103,9 +103,9 @@ func TestStackStruct(t *testing.T) {
 	}
 
 	testCases := []struct {
+		peek   *person
 		push   []*person
 		pop    []*person
-		peek   *person
 		length int
 	}{
 		{push: []*person{{name: "Alice", age: 25}, {name: "Bob", age: 30}}, pop: []*person{{name: "Bob", age: 30}}, peek: &person{name: "Alice", age: 25}, length: 1},
