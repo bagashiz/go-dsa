@@ -87,6 +87,7 @@ func TestSinglyLinkedListInsertAtInt(t *testing.T) {
 		length int
 	}{
 		{input: []item{{index: 0, data: 1}, {index: 1, data: 2}, {index: 2, data: 3}, {index: 3, data: 4}, {index: 4, data: 5}}, want: []int{1, 2, 3, 4, 5}, length: 5},
+		{input: []item{{index: 0, data: 1}, {index: 1, data: 2}, {index: 2, data: 3}, {index: 3, data: 4}, {index: 4, data: 5}, {index: 3, data: 6}}, want: []int{1, 2, 3, 6, 4, 5}, length: 6},
 		{input: []item{{index: 0, data: 1}, {index: 0, data: 2}, {index: 0, data: 3}, {index: 0, data: 4}, {index: 0, data: 5}}, want: []int{5, 4, 3, 2, 1}, length: 5},
 		{input: []item{{index: 0, data: 1}, {index: 0, data: 2}, {index: 1, data: 3}}, want: []int{2, 3, 1}, length: 3},
 		{input: []item{{index: 0, data: 1}, {index: 1, data: 2}, {index: 1, data: 3}}, want: []int{1, 3, 2}, length: 3},
@@ -129,7 +130,7 @@ func TestSinglyLinkedListRemoveInt(t *testing.T) {
 		{append: []int{1, 2, 3, 4, 5}, remove: []int{1, 2, 3, 4}, want: []int{5}, length: 1},
 		{append: []int{1, 2, 3, 4, 5}, remove: []int{1, 2, 3}, want: []int{4, 5}, length: 2},
 		{append: []int{1, 2, 3, 4, 5}, remove: []int{1, 2}, want: []int{3, 4, 5}, length: 3},
-		{append: []int{1, 2, 3, 4, 5}, remove: []int{1}, want: []int{2, 3, 4, 5}, length: 4},
+		{append: []int{1, 2, 3, 4, 5}, remove: []int{3}, want: []int{1, 2, 4, 5}, length: 4},
 		{append: []int{1, 2, 3, 4, 5}, remove: []int{6}, want: []int{1, 2, 3, 4, 5}, length: 5},
 		{append: []int{1, 2, 3, 4, 5}, remove: []int{}, want: []int{1, 2, 3, 4, 5}, length: 5},
 		{append: []int{}, remove: []int{1}, want: []int{}, length: 0},
