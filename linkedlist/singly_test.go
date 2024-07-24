@@ -1,10 +1,10 @@
-package sort_test
+package linkedlist_test
 
 import (
 	"fmt"
 	"testing"
 
-	"github.com/bagashiz/go-dsa/sort"
+	"github.com/bagashiz/go-dsa/linkedlist"
 )
 
 func TestSinglyLinkedListAppendInt(t *testing.T) {
@@ -21,7 +21,7 @@ func TestSinglyLinkedListAppendInt(t *testing.T) {
 	for i, tc := range testCases {
 		index := fmt.Sprint(i)
 		t.Run(index, func(t *testing.T) {
-			list := sort.NewSinglyLinkedList[int]()
+			list := linkedlist.NewSinglyLinkedList[int]()
 
 			for _, v := range tc.input {
 				list.Append(v)
@@ -55,7 +55,7 @@ func TestSinglyLinkedListPrependInt(t *testing.T) {
 	for i, tc := range testCases {
 		index := fmt.Sprint(i)
 		t.Run(index, func(t *testing.T) {
-			list := sort.NewSinglyLinkedList[int]()
+			list := linkedlist.NewSinglyLinkedList[int]()
 
 			for _, v := range tc.input {
 				list.Prepend(v)
@@ -99,7 +99,7 @@ func TestSinglyLinkedListInsertAtInt(t *testing.T) {
 	for i, tc := range testCases {
 		index := fmt.Sprint(i)
 		t.Run(index, func(t *testing.T) {
-			list := sort.NewSinglyLinkedList[int]()
+			list := linkedlist.NewSinglyLinkedList[int]()
 
 			for _, item := range tc.input {
 				list.InsertAt(item.data, item.index)
@@ -139,7 +139,7 @@ func TestSinglyLinkedListRemoveInt(t *testing.T) {
 	for i, tc := range testCases {
 		index := fmt.Sprint(i)
 		t.Run(index, func(t *testing.T) {
-			list := sort.NewSinglyLinkedList[int]()
+			list := linkedlist.NewSinglyLinkedList[int]()
 
 			for _, v := range tc.append {
 				list.Append(v)
@@ -181,7 +181,7 @@ func TestSinglyLinkedListRemoveAtInt(t *testing.T) {
 	for i, tc := range testCases {
 		index := fmt.Sprint(i)
 		t.Run(index, func(t *testing.T) {
-			list := sort.NewSinglyLinkedList[int]()
+			list := linkedlist.NewSinglyLinkedList[int]()
 
 			for _, v := range tc.append {
 				list.Append(v)
@@ -222,7 +222,7 @@ func TestSinglyLinkedListGetInt(t *testing.T) {
 	for i, tc := range testCases {
 		index := fmt.Sprint(i)
 		t.Run(index, func(t *testing.T) {
-			list := sort.NewSinglyLinkedList[int]()
+			list := linkedlist.NewSinglyLinkedList[int]()
 
 			for _, v := range tc.append {
 				list.Append(v)
