@@ -2,10 +2,10 @@ package sort_test
 
 import (
 	"fmt"
-	"reflect"
 	"testing"
 
 	"github.com/bagashiz/go-dsa/sort"
+	"github.com/bagashiz/go-dsa/testutil"
 )
 
 func TestStackString(t *testing.T) {
@@ -127,14 +127,14 @@ func TestStackStruct(t *testing.T) {
 
 			for _, val := range tc.pop {
 				popped := stack.Pop()
-				if !reflect.DeepEqual(popped, val) {
-					t.Errorf("[case: %s] want %v, got %v", index, val, popped)
+				if diff := testutil.Diff(popped, val); diff != "" {
+					t.Errorf("[case: %s] %s %s", index, testutil.Callers(), diff)
 				}
 			}
 
 			peeked := stack.Peek()
-			if !reflect.DeepEqual(peeked, tc.peek) {
-				t.Errorf("[case: %s] want %v, got %v", index, tc.peek, peeked)
+			if diff := testutil.Diff(peeked, tc.peek); diff != "" {
+				t.Errorf("[case: %s] %s %s", index, testutil.Callers(), diff)
 			}
 
 			length := stack.Length()

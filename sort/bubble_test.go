@@ -2,10 +2,10 @@ package sort_test
 
 import (
 	"fmt"
-	"reflect"
 	"testing"
 
 	"github.com/bagashiz/go-dsa/sort"
+	"github.com/bagashiz/go-dsa/testutil"
 )
 
 func TestBubbleSort(t *testing.T) {
@@ -26,8 +26,8 @@ func TestBubbleSort(t *testing.T) {
 		index := fmt.Sprint(i)
 		t.Run(index, func(t *testing.T) {
 			sort.BubbleSort(tc.arr)
-			if !reflect.DeepEqual(tc.arr, tc.want) {
-				t.Errorf("[case: %s] want %v, got %v", index, tc.want, tc.arr)
+			if diff := testutil.Diff(tc.arr, tc.want); diff != "" {
+				t.Errorf("[case: %s] %s %s", index, testutil.Callers(), diff)
 				return
 			}
 		})

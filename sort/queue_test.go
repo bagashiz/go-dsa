@@ -2,10 +2,10 @@ package sort_test
 
 import (
 	"fmt"
-	"reflect"
 	"testing"
 
 	"github.com/bagashiz/go-dsa/sort"
+	"github.com/bagashiz/go-dsa/testutil"
 )
 
 func TestQueueString(t *testing.T) {
@@ -127,14 +127,14 @@ func TestQueueStruct(t *testing.T) {
 
 			for _, val := range tc.deque {
 				dequeued := queue.Deque()
-				if !reflect.DeepEqual(dequeued, val) {
-					t.Errorf("[case: %s] want %v, got %v", index, val, dequeued)
+				if diff := testutil.Diff(dequeued, val); diff != "" {
+					t.Errorf("[case: %s] %s %s", index, testutil.Callers(), diff)
 				}
 			}
 
 			peeked := queue.Peek()
-			if !reflect.DeepEqual(peeked, tc.peek) {
-				t.Errorf("[case: %s] want %v, got %v", index, tc.peek, peeked)
+			if diff := testutil.Diff(peeked, tc.peek); diff != "" {
+				t.Errorf("[case: %s] %s %s", index, testutil.Callers(), diff)
 			}
 
 			length := queue.Length()
